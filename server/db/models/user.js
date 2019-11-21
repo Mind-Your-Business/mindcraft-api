@@ -26,6 +26,15 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  totalMeditations: {
+    type: Sequelize.INTEGER
+  },
+  totalJournalEntries: {
+    type: Sequelize.INTEGER
+  },
+  totalQuizzes: {
+    type: Sequelize.INTEGER
   }
 })
 
@@ -68,3 +77,5 @@ User.beforeUpdate(setSaltAndPassword)
 User.beforeBulkCreate(users => {
   users.forEach(setSaltAndPassword)
 })
+
+module.exports = User
