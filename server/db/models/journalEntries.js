@@ -7,7 +7,7 @@ const JournalEntries = db.define('journalEntries', {
     type: Sequelize.DATE
   },
   mood: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
+    type: Sequelize.STRING,
     validate: {
       [Op.contains]: [
         'okay',
