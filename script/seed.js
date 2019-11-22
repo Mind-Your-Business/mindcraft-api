@@ -1,17 +1,117 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, JournalEntries, Levels} = require('../server/db/models')
+
+const users = [
+  {
+    name: 'Zell',
+    email: 'testing1@gmail.com',
+    password: '12345678',
+    totalMeditations: 7,
+    totalJournalEntries: 3
+  },
+  {
+    name: 'Vincy',
+    email: 'testing2@gmail.com',
+    password: '12345678',
+    totalMeditations: 2,
+    totalJournalEntries: 1
+  },
+  {
+    name: 'Shion',
+    email: 'testing3@gmail.com',
+    password: '12345678',
+    totalMeditations: 1,
+    totalJournalEntries: 2
+  }
+]
+
+const entries = [
+  {
+    date: new Date(2020, 3, 12),
+    mood: 'good',
+    entry:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    userId: 1
+  },
+  {
+    date: new Date(2018, 1, 9),
+    mood: 'bad',
+    entry:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    userId: 3
+  },
+  {
+    date: new Date(2018, 1, 9),
+    mood: 'bad',
+    entry:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    userId: 3
+  },
+  {
+    date: new Date(2017, 2, 7),
+    mood: 'bad',
+    entry:
+      'Metus dictum at tempor commodo ullamcorper a. Tortor vitae purus faucibus ornare suspendisse sed nisi. Sem et tortor consequat id porta nibh venenatis cras. Faucibus ornare suspendisse sed nisi lacus sed. Etiam erat velit scelerisque in dictum non consectetur a. Molestie a iaculis at erat pellentesque adipiscing.',
+    userId: 3
+  },
+  {
+    date: new Date(2017, 2, 9),
+    mood: 'bad',
+    entry:
+      'Ac tincidunt vitae semper quis. Urna nec tincidunt praesent semper feugiat nibh. Aenean et tortor at risus viverra adipiscing at. Felis eget velit aliquet sagittis. Bibendum ut tristique et egestas quis ipsum.',
+    userId: 3
+  }
+]
+
+const levels = [
+  {
+    number: 1,
+    meditations: 1,
+    quizzes: 1
+  },
+  {
+    number: 2,
+    meditations: 3,
+    quizzes: 1,
+    entries: 3
+  },
+  {
+    number: 3,
+    meditations: 7,
+    quizzes: 3,
+    entries: 5
+  },
+  {
+    number: 4,
+    meditations: 12,
+    quizzes: 7,
+    entries: 8
+  },
+  {
+    number: 5,
+    meditations: 15,
+    quizzes: 10,
+    entries: 10
+  }
+]
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
-  ])
-
+  await Promise.all(
+    users.map(user => {
+      return User.create(user)
+    }),
+    entries.map(entry => {
+      return JournalEntries.create(entry)
+    }),
+    levels.map(level => {
+      return Levels.create(level)
+    })
+  )
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }
