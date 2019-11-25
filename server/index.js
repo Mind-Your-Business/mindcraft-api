@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
 const cors = require('cors')
+const request = require('request')
 
 module.exports = app
 
@@ -71,6 +72,19 @@ const createApp = () => {
       return res.status(200).json({})
     }
     next()
+  })
+  app.get('/', (req, res) => {
+    request(
+      {
+        url: 'https://mindcraft-api.herokuapp.com/'
+      },
+      (error, response, body) => {
+        if (error || response.statusCode !== 200) {
+          return res.status(500).json({type: 'error', message: 'err.message'})
+        }
+        res.json(JSON.parse(body))
+      }
+    )
   })
   // auth and api routes
   app.use('/auth', cors(), require('./auth'))
