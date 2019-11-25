@@ -19,14 +19,6 @@ if (process.env.NODE_ENV === 'test') {
   after('close the session store', () => sessionStore.stopExpiringSessions())
 }
 
-/**
- * In your development environment, you can keep all of your
- * app's secret API keys in a file called `secrets.js`, in your project
- * root. This file is included in the .gitignore - it will NOT be tracked
- * or show up on Github. On your production server, you can add these
- * keys as environment variables, so that they can still be read by the
- * Node process on process.env
- */
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 // passport registration
@@ -64,14 +56,16 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
   app.use(function(req, res, next) {
-    res.header(
-      'Access-Control-Allow-Origin',
-      'https://mindcraft-api.herokuapp.com'
-    )
+    res.header('Access-Control-Allow-Origin', '*')
     res.header(
       'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept'
+      'Origin, X-Requested-With, Content-Type, Accept',
+      'Authorization'
     )
+    if (req.method === 'OPTIONS') {
+      res.header('Access-Control-Allow-Methods', 'PUT,POST,PATCH,DELETE,GET')
+      return res.status(200).json({})
+    }
     next()
   })
   // auth and api routes
