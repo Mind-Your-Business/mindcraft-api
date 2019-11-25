@@ -10,6 +10,7 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+const cors = require('cors')
 
 module.exports = app
 
@@ -40,7 +41,7 @@ const createApp = () => {
   // body parsing middleware
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
-
+  app.use(cors())
   // compression middleware
   app.use(compression())
 
@@ -56,7 +57,10 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
   app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'https://mindcraft-api.herokuapp.com')
+    res.header(
+      'Access-Control-Allow-Origin',
+      'https://mindcraft-api.herokuapp.com'
+    )
     res.header(
       'Access-Control-Allow-Headers',
       'Origin, X-Requested-With, Content-Type, Accept',
@@ -69,8 +73,8 @@ const createApp = () => {
     next()
   })
   // auth and api routes
-  app.use('/auth', require('./auth'))
-  app.use('/api', require('./api'))
+  app.use('/auth', cors(), require('./auth'))
+  app.use('/api', cors(), require('./api'))
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
