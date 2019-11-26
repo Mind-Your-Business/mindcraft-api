@@ -24,20 +24,17 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
-router.get(':/userid/:activity', async (req, res, next) => {
-  try {
-    const user = await User.findOne({attributes: [`${req.params.activity}`], where: {id: req.params.id}})
-    res.json(user)
-  } catch (error) {
-    next(error)
-  }
-})
+
 //update user's information, update level, number of accomplishments etc.
-router.put('/:userId/:activity', async (req, res, next) => {
+router.put('/:userId', async (req, res, next) => {
   try {
-    let activity = req.params.activity
-    const user = await User.update({activity: req.body}, {returning: true, where: {id: req.params.id}})
-    res.json(user)
+    const user = await User.update(req.body, {
+      where: {
+        id: req.params.userId
+      },
+      returning: true
+    })
+    res.json(user[0])
   } catch (error) {
     next(error)
   }
