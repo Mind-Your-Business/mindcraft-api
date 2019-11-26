@@ -25,15 +25,20 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//update user's information, update level, number of accomplishments etc.
-router.put('/:userId', async (req, res, next) => {
+router.get('/:userId/:activity', async (req, res, next) => {
   try {
-    const user = await User.update(req.body, {
-      where: {
-        id: req.params.userId
-      },
-      returning: true
-    })
+    let activity = req.params.activity
+    const user = await User.update({activity: req.body}, {returning: true, where: {id: req.params.id}})
+    res.json(user)
+  } catch (error) {
+    next(error)
+  }
+})
+//update user's information, update level, number of accomplishments etc.
+router.put('/:userId/:activity', async (req, res, next) => {
+  try {
+    let activity = req.params.activity
+    const user = await User.update({activity: req.body}, {returning: true, where: {id: req.params.id}})
     res.json(user[0])
   } catch (error) {
     next(error)
@@ -49,3 +54,4 @@ router.post('/', async (req, res, next) => {
     next(error)
   }
 })
+
