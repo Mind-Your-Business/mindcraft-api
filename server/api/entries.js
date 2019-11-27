@@ -23,7 +23,7 @@ router.get('/time/:userId', async (req, res, next) => {
       where: {userId: req.params.userId},
       order: [['createdAt', 'DESC']]
     })
-    res.send(entry)
+    res.json(entry)
   } catch (error) {
     next(error)
   }
