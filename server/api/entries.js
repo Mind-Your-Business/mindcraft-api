@@ -17,7 +17,7 @@ router.get('/:userId', async (req, res, next) => {
 
 //determine time of last entry
 
-router.get('/:userId/time', async (req, res, next) => {
+router.get('/time/:userId', async (req, res, next) => {
   try {
     let today = JSON.stringify(new Date()).split('T')[0]
     const entry = await JournalEntries.findOne({
