@@ -25,9 +25,9 @@ router.get('time/:userId', async (req, res, next) => {
       order: [['createdAt', 'DESC']]
     })
     if (entry.split('T')[0] < today) {
-      return false
+      res.send(false)
     } else {
-      return true
+      res.send(true)
     }
   } catch (error) {
     next(error)
