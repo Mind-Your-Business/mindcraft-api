@@ -19,18 +19,11 @@ router.get('/:userId', async (req, res, next) => {
 
 router.get('/time/:userId', async (req, res, next) => {
   try {
-    let today = JSON.stringify(new Date()).split('T')[0]
     const entry = await JournalEntries.findOne({
       where: {userId: req.params.userId},
       order: [['createdAt', 'DESC']]
     })
-    let something = res.json(entry)
-    if (something.createdAt.split('T')[0]
-    < today) {
-      res.send(something.createdAt.split('T')[0])
-    } else {
-      res.send(something.createdAt.split('T')[0])
-    }
+    res.json(entry)
   } catch (error) {
     next(error)
   }
