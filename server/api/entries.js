@@ -21,7 +21,7 @@ router.get('/time/:userId', async (req, res, next) => {
   try {
     const entry = await JournalEntries.findOne({
       where: {userId: req.params.userId},
-      order: [['createdAt', 'DESC']]
+      order: [['date', 'DESC']]
     })
     res.json(entry)
   } catch (error) {
