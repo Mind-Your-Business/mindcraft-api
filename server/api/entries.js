@@ -15,7 +15,7 @@ router.get('/:userId', async (req, res, next) => {
   }
 })
 
-//determine time of last entry
+//determine last entry
 
 router.get('/time/:userId', async (req, res, next) => {
   try {
@@ -23,7 +23,7 @@ router.get('/time/:userId', async (req, res, next) => {
       where: {userId: req.params.userId},
       order: [['createdAt', 'DESC']]
     })
-    res.json(entry)
+    res.send(entry)
   } catch (error) {
     next(error)
   }
