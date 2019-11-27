@@ -15,12 +15,23 @@ router.get('/:userId', async (req, res, next) => {
   }
 })
 
-router.get('/today/:/userId', async (req, res, next) => {
+//determine time of last entry
+
+router.get('time/:userId', async (req, res, next) => {
   try {
-    const today = await JournalEntries.find({where: Sequelize.where(Sequelize.fn('dateCompute'), '>', Sequelize.fn('GETDATE'))})
-    console.log("TODAY", today)
+    let today = JSON.stringify(new Date()).split('T')[0]
+    const entry = await JournalEntries.findOne({
+      where: {userId: req.params.userId},
+      order: [['createdAt', 'DESC']]
+    })
+    if (entry.split('T')[0] < today) {
+      return false
+    } else {
+      return true
+    }
   } catch (error) {
-    next(error)  }
+    next(error)
+  }
 })
 
 //find one entry by id:
