@@ -24,12 +24,11 @@ router.get('/:userId/time', async (req, res, next) => {
       where: {userId: req.params.userId},
       order: [['createdAt', 'DESC']]
     })
-    res.json(entry)
-    // if (entry.split('T')[0] < today) {
-    //   res.send(false)
-    // } else {
-    //   res.send(true)
-    // }
+    if (entry.split('T')[0] < today) {
+      res.send(false)
+    } else {
+      res.send(true)
+    }
   } catch (error) {
     next(error)
   }
