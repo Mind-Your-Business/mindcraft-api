@@ -27,9 +27,9 @@ router.get('/:userId/time', async (req, res, next) => {
     let something = res.json(entry)
     if (something.createdAt.split('T')[0]
     < today) {
-      res.send(false)
+      res.send("no")
     } else {
-      res.send(true)
+      res.send("yes")
     }
   } catch (error) {
     next(error)
