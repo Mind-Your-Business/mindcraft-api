@@ -10,21 +10,24 @@ const users = [
     email: 'testing1@gmail.com',
     password: '12345678',
     totalMeditations: 7,
-    totalJournalEntries: 3
+    totalJournalEntries: 3,
+    userLevel: 3
   },
   {
     name: 'Vincy',
     email: 'testing2@gmail.com',
     password: '12345678',
     totalMeditations: 2,
-    totalJournalEntries: 1
+    totalJournalEntries: 1,
+    userLevel: 1
   },
   {
     name: 'Shion',
     email: 'testing3@gmail.com',
     password: '12345678',
     totalMeditations: 1,
-    totalJournalEntries: 2
+    totalJournalEntries: 4,
+    userLevel: 2
   }
 ]
 
