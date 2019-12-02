@@ -1,9 +1,16 @@
 const router = require('express').Router()
-
 const {User, JournalEntries, Levels} = require('../db/models')
+
+const isSelf = (req, res, next) => {
+  if (Number(req.user.id) === Number(req.params.userId)) {
+    next()
+  } else {
+    res.status(403).send('User not authorized.')
+  }
+}
+
 module.exports = router
 
-//get user by id:
 router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
@@ -17,7 +24,14 @@ router.get('/:userId', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      attributes: ['id', 'email', 'totalMeditations', 'totalJournalEntries', 'totalQuizzes', 'userLevel']
+      attributes: [
+        'id',
+        'email',
+        'totalMeditations',
+        'totalJournalEntries',
+        'totalQuizzes',
+        'userLevel'
+      ]
     })
     res.json(users)
   } catch (err) {
@@ -26,7 +40,7 @@ router.get('/', async (req, res, next) => {
 })
 
 //update user's information, update level, number of accomplishments etc.
-router.put('/:userId', async (req, res, next) => {
+router.put('/:userId', isSelf, async (req, res, next) => {
   try {
     const user = await User.update(req.body, {
       where: {
@@ -49,4 +63,3 @@ router.post('/', async (req, res, next) => {
     next(error)
   }
 })
-

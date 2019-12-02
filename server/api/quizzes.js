@@ -8,7 +8,7 @@ router.get('/', async (req, res, next) => {
     const quiz = await Quizzes.findAll({
       attributes: ['name', 'id', 'questions']
     })
-    res.send(quiz)
+    res.json(quiz)
   } catch (error) {
     next(error)
   }
@@ -16,15 +16,15 @@ router.get('/', async (req, res, next) => {
 
 router.get('/quiz/:id', async (req, res, next) => {
   try {
-    const quizzes = await Quiz.findByPk(req.params.id)
-    console.log('quiz', quizzes)
-    res.send(quizzes)
+    const oneQuiz = await Quiz.findByPk(req.params.id)
+    console.log('quiz', oneQuiz)
+    res.json(oneQuiz)
   } catch (error) {
     next(error)
   }
 })
 
-router.put('/quiz/:id', async (req, res, next) => {
+router.post('/quiz/:id', async (req, res, next) => {
   try {
     let thisQuiz = await Quiz.findByPk(req.params.id)
     const updatedInfo = {
@@ -32,8 +32,8 @@ router.put('/quiz/:id', async (req, res, next) => {
       completedCorrectly: req.body.completedCorrectly,
       incorrectAnswers: req.body.incorrectAnswers
     }
-    thisQuiz = await thisQuiz.update(updatedInfo)
-    res.send(thisQuiz)
+    await thisQuiz.update(updatedInfo)
+    res.json({thisQuiz, message: 'Quiz updated succesfully'})
   } catch (error) {
     next(error)
   }

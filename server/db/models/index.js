@@ -8,7 +8,8 @@ const Quiz = require('./quiz')
 User.hasMany(JournalEntries, {constraints: false})
 User.belongsToMany(Levels, {through: UserLevel})
 JournalEntries.belongsTo(User, {constraints: false})
-Quiz.belongsTo(Quizzes, {constraints: false})
+Quizzes.hasMany(Quiz, {constraints: false})
+Quiz.belongsTo(Quiz, {constraints: false})
 
 module.exports = {
   User,
