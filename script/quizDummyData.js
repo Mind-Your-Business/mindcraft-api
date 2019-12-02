@@ -1,4 +1,4 @@
-const quiz = [
+const test = [
   {
     name: 'Wise Mind',
     description: `Wise mind is the combination of both Reasonable mind and emotional mind. 
@@ -367,4 +367,4 @@ const quiz = [
   }
 ]
 
-module.exports = quiz
+module.exports = test
