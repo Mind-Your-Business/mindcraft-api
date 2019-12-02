@@ -1,15 +1,14 @@
 const router = require('express').Router()
-const {User, Quizzes, Quiz} = require('../db/models')
+const {Quizzes, Quiz} = require('../db/models')
+
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const quizzes = await Quizzes.findAll({
-      include: {
-        model: Quiz
-      }
+    const quiz = await Quizzes.findAll({
+      attributes: ['name', 'id', 'questions']
     })
-    res.send(quizzes)
+    res.json(quiz)
   } catch (error) {
     next(error)
   }
@@ -19,11 +18,12 @@ router.get('/quiz/:id', async (req, res, next) => {
   try {
     const oneQuiz = await Quiz.findByPk(req.params.id)
     console.log('quiz', oneQuiz)
-    res.send(oneQuiz)
+    res.json(oneQuiz)
   } catch (error) {
     next(error)
   }
 })
+
 
 router.put('/quiz/:id', async (req, res, next) => {
   try {
@@ -33,8 +33,8 @@ router.put('/quiz/:id', async (req, res, next) => {
       completedCorrectly: req.body.completedCorrectly,
       incorrectAnswers: req.body.incorrectAnswers
     }
-    thisQuiz = await thisQuiz.update(updatedInfo)
-    res.send(thisQuiz)
+    await thisQuiz.update(updatedInfo)
+    res.json({thisQuiz, message: 'Quiz updated succesfully'})
   } catch (error) {
     next(error)
   }
