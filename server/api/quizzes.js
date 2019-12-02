@@ -24,7 +24,8 @@ router.get('/quiz/:id', async (req, res, next) => {
   }
 })
 
-router.post('/quiz/:id', async (req, res, next) => {
+
+router.put('/quiz/:id', async (req, res, next) => {
   try {
     let thisQuiz = await Quiz.findByPk(req.params.id)
     const updatedInfo = {
