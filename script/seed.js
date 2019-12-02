@@ -1,8 +1,8 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, JournalEntries, Levels, Test} = require('../server/db/models')
-const quizData = require('./quizDummyData')
+const {User, JournalEntries, Levels, Tests} = require('../server/db/models')
+const testDummyData = require('./testDummyData')
 
 const users = [
   {
@@ -112,8 +112,8 @@ async function seed() {
     entries.map(entry => {
       return JournalEntries.create(entry)
     }),
-    quizData.map(quiz => {
-      return Test.create(quiz)
+    testDummyData.map(test => {
+      return Tests.create(test)
     }),
 
     levels.map(level => {

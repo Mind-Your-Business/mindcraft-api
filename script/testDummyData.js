@@ -1,4 +1,4 @@
-const test = [
+const testData = [
   {
     name: 'Wise Mind',
     description: `Wise mind is the combination of both Reasonable mind and emotional mind. 
@@ -367,4 +367,4 @@ const test = [
   }
 ]
 
-module.exports = test
+module.exports = testData
