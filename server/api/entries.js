@@ -1,6 +1,7 @@
 const router = require('express').Router()
-const {User, JournalEntries, Levels} = require('../db/models')
+const {JournalEntries} = require('../db/models')
 module.exports = router
+const Sequelize = require('sequelize')
 
 //gets all entries bu user's id:
 router.get('/:userId', async (req, res, next) => {
@@ -11,6 +12,20 @@ router.get('/:userId', async (req, res, next) => {
     res.json(entriesOfUser)
   } catch (err) {
     next(err)
+  }
+})
+
+//determine last entry
+
+router.get('/time/:userId', async (req, res, next) => {
+  try {
+    const entry = await JournalEntries.findOne({
+      where: {userId: req.params.userId},
+      order: [['date', 'DESC']]
+    })
+    res.json(entry)
+  } catch (error) {
+    next(error)
   }
 })
 

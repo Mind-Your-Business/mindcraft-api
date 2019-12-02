@@ -25,4 +25,15 @@ const JournalEntries = db.define('journalEntries', {
   }
 })
 
+JournalEntries.prototype.current = function() {
+  let entry = this.createdAt.split('T')[0]
+  let today = JSON.stringify(new Date()).split('T')[0]
+
+  if (entry < today) {
+    return false
+  } else {
+    return true
+  }
+}
+
 module.exports = JournalEntries
