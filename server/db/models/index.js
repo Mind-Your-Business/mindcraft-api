@@ -9,6 +9,7 @@ User.hasMany(JournalEntries, {constraints: false})
 User.belongsToMany(Levels, {through: UserLevel})
 JournalEntries.belongsTo(User, {constraints: false})
 Quiz.belongsTo(Quizzes, {constraints: false})
+Quizzes.hasMany(Quiz, {constraints: false})
 
 module.exports = {
   User,
