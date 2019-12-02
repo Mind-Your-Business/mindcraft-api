@@ -1,40 +1,39 @@
 const router = require('express').Router()
-const {Quizzes, Quiz} = require('../db/models')
+const {Tests} = require('../db/models')
 
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const quiz = await Quizzes.findAll({
+    const allTests = await Tests.findAll({
       attributes: ['name', 'id', 'questions']
     })
-    res.json(quiz)
+    res.json(allTests)
   } catch (error) {
     next(error)
   }
 })
 
-router.get('/quiz/:id', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
-    const oneQuiz = await Quiz.findByPk(req.params.id)
-    console.log('quiz', oneQuiz)
-    res.json(oneQuiz)
+    const oneTest = await Tests.findByPk(req.params.id)
+    console.log('test', oneTest)
+    res.json(oneTest)
   } catch (error) {
     next(error)
   }
 })
 
-
-router.put('/quiz/:id', async (req, res, next) => {
+router.post('/:id', async (req, res, next) => {
   try {
-    let thisQuiz = await Quiz.findByPk(req.params.id)
+    let thisTest = await Tests.findByPk(req.params.id)
     const updatedInfo = {
       correctAnswers: req.body.correctAnswers,
       completedCorrectly: req.body.completedCorrectly,
       incorrectAnswers: req.body.incorrectAnswers
     }
-    await thisQuiz.update(updatedInfo)
-    res.json({thisQuiz, message: 'Quiz updated succesfully'})
+    await thisTest.update(updatedInfo)
+    res.json({thisTest, message: 'Quiz updated succesfully'})
   } catch (error) {
     next(error)
   }

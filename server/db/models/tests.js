@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Quiz = db.define('quiz', {
+const Tests = db.define('tests', {
   name: {
     type: Sequelize.STRING,
     allowNull: false
@@ -31,9 +31,9 @@ const Quiz = db.define('quiz', {
   }
 })
 
-Quiz.prototype.findByName = async name => {
-  const quiz = await Quiz.findAll({where: name})
+Tests.prototype.findByName = async name => {
+  const quiz = await Tests.findAll({where: name})
   return quiz
 }
 
-module.exports = Quiz
+module.exports = Tests
