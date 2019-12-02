@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const {JournalEntries} = require('../db/models')
 module.exports = router
-const Sequelize = require('sequelize')
 
 //gets all entries bu user's id:
 router.get('/:userId', async (req, res, next) => {
