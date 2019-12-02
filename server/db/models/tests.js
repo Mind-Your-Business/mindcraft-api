@@ -19,15 +19,11 @@ const Tests = db.define('tests', {
   },
   correctAnswers: {
     type: Sequelize.INTEGER,
-    validate: {
-      minimum: 0
-    }
+    defaultValue: 0
   },
   incorrectAnswers: {
     type: Sequelize.INTEGER,
-    validate: {
-      minimum: 0
-    }
+    defaultValue: 0
   }
 })
 

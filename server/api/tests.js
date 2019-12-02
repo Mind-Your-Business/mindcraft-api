@@ -24,7 +24,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post('/:id', async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   try {
     let thisTest = await Tests.findByPk(req.params.id)
     const updatedInfo = {
