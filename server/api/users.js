@@ -49,7 +49,7 @@ router.put('/:userId', async (req, res, next) => {
       },
       returning: true
     })
-    res.json(user[0])
+    res.json(user)
   } catch (error) {
     next(error)
   }
