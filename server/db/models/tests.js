@@ -9,10 +9,6 @@ const Tests = db.define('tests', {
   description: {
     type: Sequelize.TEXT
   },
-  questions: {
-    type: Sequelize.ARRAY(Sequelize.TEXT)
-  },
-
   completedCorrectly: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
