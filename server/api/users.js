@@ -1,5 +1,13 @@
 const router = require('express').Router()
-const {User, JournalEntries, Levels} = require('../db/models')
+const Sequelize = require('sequelize')
+const {
+  User,
+  JournalEntries,
+  TestQuestions,
+  Tests,
+  Levels
+} = require('../db/models')
+const Op = Sequelize.Op
 
 const isSelf = (req, res, next) => {
   if (Number(req.user.id) === Number(req.params.userId)) {
@@ -15,6 +23,28 @@ router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
     res.send(user)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.get('/:userId/test', async (req, res, next) => {
+  try {
+    const thisUser = await User.findByPk(req.params.userId, {
+      attributes: ['completedQuizzes']
+    })
+    console.log('thisUser', thisUser.completedQuizzes)
+    const test = await Tests.findOne(
+      {
+        where: {
+          id: {
+            [Op.notIn]: thisUser.completedQuizzes
+          }
+        }
+      },
+      {include: {model: TestQuestions}}
+    )
+    res.send(test)
   } catch (error) {
     next(error)
   }
@@ -40,15 +70,31 @@ router.get('/', async (req, res, next) => {
 })
 
 //update user's information, update level, number of accomplishments etc.
-router.put('/:userId', isSelf, async (req, res, next) => {
+router.put('/:userId', async (req, res, next) => {
   try {
+    console.log(req.params.userId)
     const user = await User.update(req.body, {
       where: {
         id: req.params.userId
       },
       returning: true
     })
-    res.json(user[0])
+    res.json(user)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/:userId/test', async (req, res, next) => {
+  try {
+    const thisUser = await User.findByPk(req.params.userId)
+    thisUser.completedQuizzes.push(req.body.testId)
+    console.log('typeof', typeof thisUser.completedQuizzes)
+    await thisUser.update({
+      completedQuizzes: thisUser.completedQuizzes,
+      totalQuizzes: thisUser.totalQuizzes + 1
+    })
+    res.send(thisUser)
   } catch (error) {
     next(error)
   }

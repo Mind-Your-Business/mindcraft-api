@@ -38,6 +38,10 @@ const User = db.define('user', {
   },
   userLevel: {
     type: Sequelize.INTEGER
+  },
+  completedQuizzes: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    defaultValue: []
   }
 })
 

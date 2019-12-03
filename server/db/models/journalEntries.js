@@ -20,6 +20,15 @@ const JournalEntries = db.define('journalEntries', {
       ]
     }
   },
+  favorite: {
+    type: Sequelize.STRING
+  },
+  least: {
+    type: Sequelize.STRING
+  },
+  hoursSLept: {
+    type: Sequelize.FLOAT
+  },
   entry: {
     type: Sequelize.TEXT
   }
