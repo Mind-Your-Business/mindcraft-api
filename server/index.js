@@ -55,9 +55,17 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
+  const redirectToLogin = (req, res, next) => {
+    console.log('session is', req.session)
+    if (!req.session) {
+      redirectToLogin('/auth/login/')
+    } else {
+      next()
+    }
+  }
   // auth and api routes
   app.use('/auth', require('./auth'))
-  app.use('/api', require('./api'))
+  app.use('/api', redirectToLogin, require('./api'))
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))

@@ -1,7 +1,13 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, JournalEntries, Levels, Tests, TestQuestions} = require('../server/db/models')
+const {
+  User,
+  JournalEntries,
+  Levels,
+  Tests,
+  TestQuestions
+} = require('../server/db/models')
 const {testData, testQuestions} = require('./testDummyData')
 
 const users = [
@@ -123,6 +129,7 @@ async function seed() {
     })
   )
   console.log(`seeded ${users.length} users`)
+
   console.log(`seeded successfully`)
 }
 
