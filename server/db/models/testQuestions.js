@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const TestQuestions = db.define('questions', {
+const TestQuestions = db.define('test-questions', {
  text: {
    type: Sequelize.TEXT
  },
