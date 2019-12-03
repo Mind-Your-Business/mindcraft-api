@@ -6,6 +6,7 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const allTests = await Tests.findAll({include: {model: TestQuestions}})
+
     res.json(allTests)
   } catch (error) {
     next(error)
