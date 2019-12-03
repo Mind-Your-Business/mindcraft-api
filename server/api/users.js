@@ -33,15 +33,14 @@ router.get('/:userId/test', async (req, res, next) => {
     const thisUser = await User.findByPk(req.params.userId, {
       attributes: ['completedQuizzes']
     })
-    const test = await Tests.findOne(
-      { include: [{model: TestQuestions}],
-        where: {
-          id: {
-            [Op.notIn]: thisUser.completedQuizzes
-          }
+    const test = await Tests.findOne({
+      include: [{model: TestQuestions}],
+      where: {
+        id: {
+          [Op.notIn]: thisUser.completedQuizzes
         }
       }
-    )
+    })
     res.send(test)
   } catch (error) {
     next(error)
