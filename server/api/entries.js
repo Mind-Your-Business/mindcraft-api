@@ -45,7 +45,7 @@ router.post('/:userId', async (req, res) => {
     const newEntry = await JournalEntries.create(req.body, {
       where: {userId: req.params.userId}
     })
-    res.redirect('/entries' + newEntry.slug)
+    res.send(newEntry)
   } catch (err) {
     console.log(err)
   }
