@@ -41,6 +41,7 @@ router.get('/entry/:Id', async (req, res, next) => {
 //creates new journal entry for user, mood and entry should be on body of the request:
 
 router.post('/:userId', async (req, res) => {
+  console.log('got here')
   try {
     const newEntry = await JournalEntries.create(req.body, {
       where: {userId: req.params.userId}
