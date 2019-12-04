@@ -4,7 +4,8 @@ const db = require('../db')
 
 const JournalEntries = db.define('journalEntries', {
   date: {
-    type: Sequelize.DATE
+    type: Sequelize.DATE,
+    defaultValue: new Date()
   },
   mood: {
     type: Sequelize.STRING,
