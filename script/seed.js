@@ -18,6 +18,7 @@ const users = [
     totalMeditations: 7,
     totalJournalEntries: 3,
     userLevel: 3,
+    totalQuizzes: 4,
     completedQuizzes: [1, 2, 3, 6]
   },
   {
@@ -26,7 +27,8 @@ const users = [
     password: '12345678',
     totalMeditations: 2,
     totalJournalEntries: 1,
-    userLevel: 1
+    userLevel: 1,
+    totalQuizzes: 0
   },
   {
     name: 'Shion',
@@ -34,7 +36,8 @@ const users = [
     password: '12345678',
     totalMeditations: 1,
     totalJournalEntries: 4,
-    userLevel: 2
+    userLevel: 2,
+    totalQuizzes: 0
   }
 ]
 
