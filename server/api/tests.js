@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Tests, TestQuestions, User} = require('../db/models')
+const isSelf = require('./securityCheck')
 
 module.exports = router
 
@@ -13,19 +14,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-// router.get('/:id', async (req, res, next) => {
-//   try {
-//     const oneTest = await Tests.findAll({
-//       where: {id: req.params.id},
-//       include: { model : TestQuestions}})
-//     console.log('test', oneTest)
-//     res.json(oneTest)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
-
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', isSelf, async (req, res, next) => {
   try {
     const thisTest = await Tests.findByPk(req.params.id, {
       include: [{model: User}, {model: TestQuestions}]
