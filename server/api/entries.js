@@ -14,7 +14,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 //gets all entries by user's id:
-router.get('/user/:userId', isSelf, async (req, res, next) => {
+router.get('/user/:userId', async (req, res, next) => {
   try {
     const entriesOfUser = await JournalEntries.findAll({
       where: {userId: req.params.userId}
@@ -27,7 +27,7 @@ router.get('/user/:userId', isSelf, async (req, res, next) => {
 
 // access user entry by id
 
-router.get('/user/:userId/:entryId', isSelf, async (req, res, next) => {
+router.get('/user/:userId/:entryId', async (req, res, next) => {
   try {
     const entriesOfUser = await JournalEntries.findAll(
       {
@@ -43,7 +43,7 @@ router.get('/user/:userId/:entryId', isSelf, async (req, res, next) => {
 
 //determine last entry
 
-router.get('/time/:userId', isSelf, async (req, res, next) => {
+router.get('/time/:userId', async (req, res, next) => {
   try {
     const entry = await JournalEntries.findOne({
       where: {userId: req.params.userId},
@@ -57,7 +57,7 @@ router.get('/time/:userId', isSelf, async (req, res, next) => {
 
 //creates new journal entry for user, mood and entry should be on body of the request:
 
-router.post('/:userId', isSelf, async (req, res, next) => {
+router.post('/:userId', async (req, res, next) => {
   try {
     const newEntry = await JournalEntries.create(req.body, {
       where: {userId: req.params.userId}
@@ -69,7 +69,7 @@ router.post('/:userId', isSelf, async (req, res, next) => {
 })
 //deletes a user's entry
 
-router.delete('/user/:userId/:entryId', isSelf, async (req, res, next) => {
+router.delete('/user/:userId/:entryId', async (req, res, next) => {
   try {
     const entry = await JournalEntries.findByPk(req.params.entryId)
     await entry.destroy()

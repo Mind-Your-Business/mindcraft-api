@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', isSelf, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const thisTest = await Tests.findByPk(req.params.id, {
       include: [{model: User}, {model: TestQuestions}]

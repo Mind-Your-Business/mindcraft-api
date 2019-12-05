@@ -6,7 +6,7 @@ const isSelf = require('./securityCheck')
 
 module.exports = router
 
-router.get('/:userId', isSelf, async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId)
     res.send(user)
@@ -15,7 +15,7 @@ router.get('/:userId', isSelf, async (req, res, next) => {
   }
 })
 
-router.get('/:userId/test', isSelf, async (req, res, next) => {
+router.get('/:userId/test', async (req, res, next) => {
   try {
     const thisUser = await User.findByPk(req.params.userId, {
       attributes: ['completedQuizzes']
@@ -54,7 +54,7 @@ router.get('/', async (req, res, next) => {
 })
 
 //update user's information, update level, number of accomplishments etc.
-router.put('/:userId', isSelf, async (req, res, next) => {
+router.put('/:userId', async (req, res, next) => {
   try {
     console.log(req.params.userId)
     const user = await User.update(req.body, {
@@ -69,7 +69,7 @@ router.put('/:userId', isSelf, async (req, res, next) => {
   }
 })
 
-router.put('/:userId/test', isSelf, async (req, res, next) => {
+router.put('/:userId/test', async (req, res, next) => {
   try {
     const thisUser = await User.findByPk(req.params.userId)
     thisUser.completedQuizzes.push(req.body.testId)
