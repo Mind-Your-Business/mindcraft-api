@@ -59,14 +59,21 @@ router.get('/time/:userId', async (req, res, next) => {
 
 router.post('/user/:userId', async (req, res, next) => {
   try {
-    const newEntry = await JournalEntries.create(req.body, {
-      where: {userId: req.params.userId}
-    })
-    res.send(newEntry)
+    const newEntry = await JournalEntries.create(
+      req.body,
+      {
+        where: {userId: req.params.userId}
+      },
+      {include: User}
+    )
+    const user = await User.findByPk(req.params.userId)
+    await user.update({totalJournalEntries: user.totalJournalEntries + 1})
+    res.send(user)
   } catch (err) {
     next(err)
   }
 })
+
 //deletes a user's entry
 
 router.delete('/user/:userId/:entryId', async (req, res, next) => {
