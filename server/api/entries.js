@@ -73,6 +73,7 @@ router.post('/user/:userId', async (req, res, next) => {
     next(err)
   }
 })
+
 //deletes a user's entry
 
 router.delete('/user/:userId/:entryId', async (req, res, next) => {

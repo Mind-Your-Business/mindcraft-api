@@ -27,7 +27,7 @@ const JournalEntries = db.define('journalEntries', {
   least: {
     type: Sequelize.STRING
   },
-  hoursSLept: {
+  hoursSlept: {
     type: Sequelize.FLOAT
   },
   entry: {
