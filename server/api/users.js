@@ -20,6 +20,12 @@ router.get('/:userId/test', async (req, res, next) => {
     const thisUser = await User.findByPk(req.params.userId, {
       attributes: ['completedQuizzes']
     })
+    if (thisUser.completedQuizzes === null) {
+      const test = await Tests.findbyPk(2, {
+        include: [{model: TestQuestions}]
+      })
+      res.send(test)
+    }
     const test = await Tests.findOne({
       include: [{model: TestQuestions}],
       where: {
