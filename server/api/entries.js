@@ -57,12 +57,18 @@ router.get('/time/:userId', async (req, res, next) => {
 
 //creates new journal entry for user, mood and entry should be on body of the request:
 
-router.post('/:userId', async (req, res, next) => {
+router.post('/user/:userId', async (req, res, next) => {
   try {
-    const newEntry = await JournalEntries.create(req.body, {
-      where: {userId: req.params.userId}
-    })
-    res.redirect('/entries' + newEntry.slug)
+    const newEntry = await JournalEntries.create(
+      req.body,
+      {
+        where: {userId: req.params.userId}
+      },
+      {include: User}
+    )
+    const user = await User.findByPk(req.params.userId)
+    await user.update({totalJournalEntries: user.totalJournalEntries + 1})
+    res.send(user)
   } catch (err) {
     next(err)
   }
