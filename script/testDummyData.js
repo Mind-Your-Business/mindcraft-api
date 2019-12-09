@@ -193,7 +193,7 @@ const testQuestions = [
     testId: 5,
     text: `I’ve had a bad day.`,
     answer: 'No',
-    response: `Technically, this is a judgement about your day. A less judgemental way of saying this may be ‘I’ve had a difficult day.’ It is important to note that while practicing this skill, we take note of all judgements. But in practical terms, we’re going to be judgemental every day for the rest of our lives no matter what we do. So, in an effort to be practical, it is only useful to be non-judgemental in situations where being judgemental gets in the way of our happiness.`
+    response: `Technically, this is a judgement about your day. A less judgmental way of saying this may be ‘I’ve had a difficult day.’ It is important to note that while practicing this skill, we take note of all judgements. But in practical terms, we’re going to be judgmental every day for the rest of our lives no matter what we do. So, in an effort to be practical, it is only useful to be non-judgmental in situations where being judgmental gets in the way of our happiness.`
   },
   {
     testId: 5,
@@ -205,26 +205,26 @@ const testQuestions = [
     testId: 5,
     text: `You are always late.`,
     answer: 'No',
-    response: `this is probably an exaggeration because no one is actually *always* late. Watch out for words like always and never. If you use them, you’re probably judging.`
-  },
-  {
-    testId: 5,
-    text: `I didn’t do as well as i wish i did`,
-    answer: 'Yes',
-    response: `This is a correct use.`
+    response: `This is probably an exaggeration because no one is actually *always* late. Watch out for words like always and never. If you use them, you’re probably judging.`
   },
   {
     testId: 5,
     text: `This car is the best.`,
     answer: 'No',
-    response: `Even positive judgements are judgements . Maybe  more non-judgemental statement like ‘This is my favorite car’ would work better here since it is a matter of preference.`
+    response: `Even positive judgements are judgements . Maybe a more non-judgmental statement like ‘This is my favorite car’ would work better here since it is a matter of preference.`
   },
   {
     testId: 5,
     text: `You never do anything romantic.`,
     answer: 'No',
-    response: `Not only is this a loaded statement but it is neither true, nor is it non-judgemental. A more appropriate statement would be ‘I noticed we haven’t done anything romantic lately...'`
+    response: `Not only is this a loaded statement but it is neither true, nor is it non-judgmental. A more appropriate statement would be ‘I noticed we haven’t done anything romantic lately...'`
   },
+  // {
+  //   testId: 5,
+  //   text: `I didn’t do as well as I wish I did`,
+  //   answer: 'Yes',
+  //   response: `This is non-judgmental`
+  // },
   {
     testId: 5,
     text: `You were late three times this week.`,
@@ -294,8 +294,8 @@ const testData = [
     description: `Entering fully into present experiences is the third way we can actively get into wise mind, after observe and describe.Which of the following are examples of participate?`
   },
   {
-    name: 'Non-Judgemental',
-    description: `Being non-judgemental can be difficult but sticking to the facts can really help you and your relationships. Which are examples of this skill?`
+    name: 'Non-Judgmental',
+    description: `Being non-judgmental can be difficult but sticking to the facts can really help you and your relationships. For the following statements choose whether something is judgmental (yes) or not (no).`
   },
   {
     name: `One Mindfully`,
