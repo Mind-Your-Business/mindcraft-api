@@ -76,6 +76,34 @@ const entries = [
     entry:
       'Ac tincidunt vitae semper quis. Urna nec tincidunt praesent semper feugiat nibh. Aenean et tortor at risus viverra adipiscing at. Felis eget velit aliquet sagittis. Bibendum ut tristique et egestas quis ipsum.',
     userId: 3
+  },
+  {
+    date: new Date(2019, 4, 10),
+    mood: 'Great',
+    hoursSlept: 9,
+    favorite: 'Waking up without an alarm',
+    least: 'Not a one',
+    entry: `Today was great. I'm officially in Rome and in vacation mode. It feels good to be out of work mode after spending the last few weeks grinding out all those projects at work and to get up without having to hear the sound of an alarm. I can't wait to see what the day holds and where I end up today.`,
+    userId: 1
+  },
+  {
+    date: new Date(2019, 4, 1),
+    mood: 'Okay',
+    hoursSlept: 5,
+    favorite: 'Hmmm....',
+    least: 'Just one?',
+    entry: `Today was a roller coaster I would have rather not been on. These projects at work feel never ending and it feels like the quest for progress is not going in the right direction. I know that it's all temporary but damn,what the he..?Grr...is it time to go on vacation yet?`,
+    userId: 1
+  },
+
+  {
+    date: new Date(2018, 12, 24),
+    mood: 'Good',
+    hoursSlept: 7,
+    favorite: 'Shopping',
+    least: 'Wrapping all these presents',
+    entry: `Today has been...productive. Waiting to shop for everyone's presents has definitely not been my brightest idea ever but I guess I do love a good challenge? Shopping was actually pretty pleasant since I made it out early enough to avoid the crowds and was (fortunately) able to find something for everyone. I definitely wish I had an extra set of hands to wrap some of the presents but it'll be worthwhile to see them under the tree and watch everyone have something to open tomorrow morning. All right, I've babbled enough. Time to wrap.`,
+    userId: 1
   }
 ]
 
