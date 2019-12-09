@@ -192,49 +192,49 @@ const testQuestions = [
   {
     testId: 5,
     text: `I’ve had a bad day.`,
-    answer: 'No',
+    answer: 'Yes',
     response: `Technically, this is a judgement about your day. A less judgmental way of saying this may be ‘I’ve had a difficult day.’ It is important to note that while practicing this skill, we take note of all judgements. But in practical terms, we’re going to be judgmental every day for the rest of our lives no matter what we do. So, in an effort to be practical, it is only useful to be non-judgmental in situations where being judgmental gets in the way of our happiness.`
   },
   {
     testId: 5,
     text: `I hate the rain.`,
-    answer: 'No',
+    answer: 'Yes',
     response: `Hate is a preference or emotion. So if you hate it, you hate it.`
   },
   {
     testId: 5,
     text: `You are always late.`,
-    answer: 'No',
+    answer: 'Yes',
     response: `This is probably an exaggeration because no one is actually *always* late. Watch out for words like always and never. If you use them, you’re probably judging.`
   },
   {
     testId: 5,
     text: `This car is the best.`,
-    answer: 'No',
+    answer: 'Yes',
     response: `Even positive judgements are judgements . Maybe a more non-judgmental statement like ‘This is my favorite car’ would work better here since it is a matter of preference.`
   },
   {
     testId: 5,
     text: `You never do anything romantic.`,
-    answer: 'No',
+    answer: 'Yes',
     response: `Not only is this a loaded statement but it is neither true, nor is it non-judgmental. A more appropriate statement would be ‘I noticed we haven’t done anything romantic lately...'`
   },
   // {
   //   testId: 5,
   //   text: `I didn’t do as well as I wish I did`,
-  //   answer: 'Yes',
+  //   answer: 'No',
   //   response: `This is non-judgmental`
   // },
   {
     testId: 5,
     text: `You were late three times this week.`,
-    answer: 'No',
-    response: `Saying something like this is non-judgemental because it is specific and sticks to the facts, no judgement involved.`
+    answer: 'Yes',
+    response: `Saying something like this is non-judgmental because it is specific and sticks to the facts, no judgement involved.`
   },
   {
     testId: 5,
     text: `Pizza is gross.`,
-    answer: 'No',
+    answer: 'Yes',
     response: `Pizza isn’t gross. It is just pizza, though some may have a preference for it or not.`
   },
   {
