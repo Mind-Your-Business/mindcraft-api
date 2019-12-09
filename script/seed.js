@@ -19,7 +19,7 @@ const users = [
     totalJournalEntries: 3,
     userLevel: 3,
     totalQuizzes: 1,
-    completedQuizzes: [1, 2, 3, 6]
+    completedQuizzes: [1, 2, 3, 4, 6]
   },
   {
     name: 'Vincy',
