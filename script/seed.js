@@ -43,42 +43,42 @@ const users = [
 
 const entries = [
   {
-    date: new Date(2020, 3, 12),
-    mood: 'good',
+    date: new Date(2019, 2, 12),
+    mood: 'Good',
     entry:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     userId: 1
   },
   {
     date: new Date(2018, 1, 9),
-    mood: 'bad',
+    mood: 'Bad',
     entry:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     userId: 3
   },
   {
     date: new Date(2018, 1, 9),
-    mood: 'bad',
+    mood: 'Bad',
     entry:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     userId: 3
   },
   {
     date: new Date(2017, 2, 7),
-    mood: 'bad',
+    mood: 'Bad',
     entry:
       'Metus dictum at tempor commodo ullamcorper a. Tortor vitae purus faucibus ornare suspendisse sed nisi. Sem et tortor consequat id porta nibh venenatis cras. Faucibus ornare suspendisse sed nisi lacus sed. Etiam erat velit scelerisque in dictum non consectetur a. Molestie a iaculis at erat pellentesque adipiscing.',
     userId: 3
   },
   {
     date: new Date(2017, 2, 9),
-    mood: 'bad',
+    mood: 'Bad',
     entry:
       'Ac tincidunt vitae semper quis. Urna nec tincidunt praesent semper feugiat nibh. Aenean et tortor at risus viverra adipiscing at. Felis eget velit aliquet sagittis. Bibendum ut tristique et egestas quis ipsum.',
     userId: 3
   },
   {
-    date: new Date(2019, 4, 10),
+    date: new Date(2019, 3, 10),
     mood: 'Great',
     hoursSlept: 9,
     favorite: 'Waking up without an alarm',
@@ -87,7 +87,7 @@ const entries = [
     userId: 1
   },
   {
-    date: new Date(2019, 4, 1),
+    date: new Date(2019, 3, 1),
     mood: 'Okay',
     hoursSlept: 5,
     favorite: 'Hmmm....',
@@ -97,7 +97,7 @@ const entries = [
   },
 
   {
-    date: new Date(2018, 12, 24),
+    date: new Date(2018, 11, 24),
     mood: 'Good',
     hoursSlept: 7,
     favorite: 'Shopping',
